@@ -1,0 +1,63 @@
+# config-openapi-generator.yml
+generatorName: php-nextgen
+outputDir: .
+inputSpec: https://mellifera.beekube.com/openapi/openapi.json
+gitHost: github.com
+gitUserId: beekube-app
+gitRepoId: blup-php-sdk
+
+# Package configuration
+invokerPackage: Beekube\BlupSDK
+artifactVersion: 1.0.0
+packageName: blup-php-sdk
+srcBasePath: src
+variableNamingConvention: camelCase
+
+# Server configuration
+serverVariables:
+  host: https://mellifera.beekube.com
+
+# HTTP client configuration
+httpUserAgent: Beekube-Blup/1.0.0
+
+# PHP specific configurations
+modelPackage: Models
+apiPackage: Api
+composerVendorName: beekube-app
+composerProjectName: blup-php-sdk
+
+# Composer metadata
+artifactDescription: "SDK PHP pour l'API BLUP de Beekube - Calcul génétique des abeilles mellifères"
+infoEmail: tech@beekube.com
+infoName: "Beekube"
+infoUrl: https://www.beekube.com
+licenseName: MIT
+licenseUrl: https://github.com/beekube-app/blup-php-sdk/blob/main/LICENSE
+artifactKeywords:
+  - beekube
+  - blup
+  - api
+  - sdk
+  - genetics
+  - beekeeping
+  - mellifera
+composerAuthorName: "Beekube"
+composerAuthorEmail: contact@beekube.com
+composerHomepage: https://github.com/beekube-app/blup-php-sdk
+
+# Organization information
+developerOrganization: Beekube
+developerOrganizationUrl: https://www.beekube.com
+artifactUrl: https://github.com/beekube-app/blup-php-sdk
+
+# Code generation options
+sortParamsByRequiredFlag: true
+sortModelPropertiesByRequiredFlag: true
+ensureUniqueParams: true
+hideGenerationTimestamp: true
+legacyDiscriminatorBehavior: false
+
+# PHP quality settings
+phpLegacySupport: false
+phpUnitVer: 9.5.0
+disallowAdditionalPropertiesIfNotPresent: false
