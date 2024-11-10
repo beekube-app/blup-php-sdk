@@ -1,6 +1,6 @@
 <?php
 /**
- * BLUPInput
+ * QueenBeeOutput
  *
  * PHP version 8.1
  *
@@ -35,14 +35,14 @@ use ReturnTypeWillChange;
 use Beekube\BlupSDK\ObjectSerializer;
 
 /**
- * BLUPInput Class Doc Comment
+ * QueenBeeOutput Class Doc Comment
  *
  * @package  Beekube\BlupSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
+class QueenBeeOutput implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'BLUPInput';
+    protected static string $openAPIModelName = 'QueenBeeOutput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,13 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'data' => '\Beekube\BlupSDK\Models\QueenBeeInput[]',
-        'evaluate' => 'int[]',
-        'evaluateElimination' => 'int[]',
-        'exploitation' => 'int'
+        'apiaryDefault' => 'int',
+        'blups' => 'array<string,\Beekube\BlupSDK\Models\BlupsValue>',
+        'born' => 'string',
+        'droneParent' => 'string',
+        'methods' => 'array<string,\Beekube\BlupSDK\Models\MethodsValue>',
+        'queenbee' => 'string',
+        'queenbeeParent' => 'string'
     ];
 
     /**
@@ -71,10 +74,13 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'data' => null,
-        'evaluate' => null,
-        'evaluateElimination' => null,
-        'exploitation' => null
+        'apiaryDefault' => null,
+        'blups' => null,
+        'born' => null,
+        'droneParent' => null,
+        'methods' => null,
+        'queenbee' => null,
+        'queenbeeParent' => null
     ];
 
     /**
@@ -83,10 +89,13 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'evaluate' => false,
-        'evaluateElimination' => false,
-        'exploitation' => false
+        'apiaryDefault' => true,
+        'blups' => false,
+        'born' => false,
+        'droneParent' => false,
+        'methods' => false,
+        'queenbee' => false,
+        'queenbeeParent' => false
     ];
 
     /**
@@ -175,10 +184,13 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'data' => 'data',
-        'evaluate' => 'evaluate',
-        'evaluateElimination' => 'evaluate_elimination',
-        'exploitation' => 'exploitation'
+        'apiaryDefault' => 'apiary_default',
+        'blups' => 'blups',
+        'born' => 'born',
+        'droneParent' => 'drone_parent',
+        'methods' => 'methods',
+        'queenbee' => 'queenbee',
+        'queenbeeParent' => 'queenbee_parent'
     ];
 
     /**
@@ -187,10 +199,13 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $setters = [
-        'data' => 'setData',
-        'evaluate' => 'setEvaluate',
-        'evaluateElimination' => 'setEvaluateElimination',
-        'exploitation' => 'setExploitation'
+        'apiaryDefault' => 'setApiaryDefault',
+        'blups' => 'setBlups',
+        'born' => 'setBorn',
+        'droneParent' => 'setDroneParent',
+        'methods' => 'setMethods',
+        'queenbee' => 'setQueenbee',
+        'queenbeeParent' => 'setQueenbeeParent'
     ];
 
     /**
@@ -199,10 +214,13 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $getters = [
-        'data' => 'getData',
-        'evaluate' => 'getEvaluate',
-        'evaluateElimination' => 'getEvaluateElimination',
-        'exploitation' => 'getExploitation'
+        'apiaryDefault' => 'getApiaryDefault',
+        'blups' => 'getBlups',
+        'born' => 'getBorn',
+        'droneParent' => 'getDroneParent',
+        'methods' => 'getMethods',
+        'queenbee' => 'getQueenbee',
+        'queenbeeParent' => 'getQueenbeeParent'
     ];
 
     /**
@@ -261,10 +279,13 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('evaluate', $data ?? [], null);
-        $this->setIfExists('evaluateElimination', $data ?? [], null);
-        $this->setIfExists('exploitation', $data ?? [], null);
+        $this->setIfExists('apiaryDefault', $data ?? [], null);
+        $this->setIfExists('blups', $data ?? [], null);
+        $this->setIfExists('born', $data ?? [], null);
+        $this->setIfExists('droneParent', $data ?? [], null);
+        $this->setIfExists('methods', $data ?? [], null);
+        $this->setIfExists('queenbee', $data ?? [], null);
+        $this->setIfExists('queenbeeParent', $data ?? [], null);
     }
 
     /**
@@ -294,17 +315,26 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['apiaryDefault'] === null) {
+            $invalidProperties[] = "'apiaryDefault' can't be null";
         }
-        if ($this->container['evaluate'] === null) {
-            $invalidProperties[] = "'evaluate' can't be null";
+        if ($this->container['blups'] === null) {
+            $invalidProperties[] = "'blups' can't be null";
         }
-        if ($this->container['evaluateElimination'] === null) {
-            $invalidProperties[] = "'evaluateElimination' can't be null";
+        if ($this->container['born'] === null) {
+            $invalidProperties[] = "'born' can't be null";
         }
-        if ($this->container['exploitation'] === null) {
-            $invalidProperties[] = "'exploitation' can't be null";
+        if ($this->container['droneParent'] === null) {
+            $invalidProperties[] = "'droneParent' can't be null";
+        }
+        if ($this->container['methods'] === null) {
+            $invalidProperties[] = "'methods' can't be null";
+        }
+        if ($this->container['queenbee'] === null) {
+            $invalidProperties[] = "'queenbee' can't be null";
+        }
+        if ($this->container['queenbeeParent'] === null) {
+            $invalidProperties[] = "'queenbeeParent' can't be null";
         }
         return $invalidProperties;
     }
@@ -322,109 +352,197 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
 
 
     /**
-     * Gets data
-     *
-     * @return \Beekube\BlupSDK\Models\QueenBeeInput[]
-     */
-    public function getData(): array
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Beekube\BlupSDK\Models\QueenBeeInput[] $data data
-     *
-     * @return $this
-     */
-    public function setData(array $data): static
-    {
-        if (is_null($data)) {
-            throw new InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets evaluate
-     *
-     * @return int[]
-     */
-    public function getEvaluate(): array
-    {
-        return $this->container['evaluate'];
-    }
-
-    /**
-     * Sets evaluate
-     *
-     * @param int[] $evaluate evaluate
-     *
-     * @return $this
-     */
-    public function setEvaluate(array $evaluate): static
-    {
-        if (is_null($evaluate)) {
-            throw new InvalidArgumentException('non-nullable evaluate cannot be null');
-        }
-        $this->container['evaluate'] = $evaluate;
-
-        return $this;
-    }
-
-    /**
-     * Gets evaluateElimination
-     *
-     * @return int[]
-     */
-    public function getEvaluateElimination(): array
-    {
-        return $this->container['evaluateElimination'];
-    }
-
-    /**
-     * Sets evaluateElimination
-     *
-     * @param int[] $evaluateElimination evaluateElimination
-     *
-     * @return $this
-     */
-    public function setEvaluateElimination(array $evaluateElimination): static
-    {
-        if (is_null($evaluateElimination)) {
-            throw new InvalidArgumentException('non-nullable evaluateElimination cannot be null');
-        }
-        $this->container['evaluateElimination'] = $evaluateElimination;
-
-        return $this;
-    }
-
-    /**
-     * Gets exploitation
+     * Gets apiaryDefault
      *
      * @return int
      */
-    public function getExploitation(): int
+    public function getApiaryDefault(): ?int
     {
-        return $this->container['exploitation'];
+        return $this->container['apiaryDefault'];
     }
 
     /**
-     * Sets exploitation
+     * Sets apiaryDefault
      *
-     * @param int $exploitation exploitation
+     * @param int $apiaryDefault apiaryDefault
      *
      * @return $this
      */
-    public function setExploitation(int $exploitation): static
+    public function setApiaryDefault(?int $apiaryDefault): static
     {
-        if (is_null($exploitation)) {
-            throw new InvalidArgumentException('non-nullable exploitation cannot be null');
+        if (is_null($apiaryDefault)) {
+            array_push($this->openAPINullablesSetToNull, 'apiaryDefault');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('apiaryDefault', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['exploitation'] = $exploitation;
+        $this->container['apiaryDefault'] = $apiaryDefault;
+
+        return $this;
+    }
+
+    /**
+     * Gets blups
+     *
+     * @return array<string,\Beekube\BlupSDK\Models\BlupsValue>
+     */
+    public function getBlups(): array
+    {
+        return $this->container['blups'];
+    }
+
+    /**
+     * Sets blups
+     *
+     * @param array<string,\Beekube\BlupSDK\Models\BlupsValue> $blups blups
+     *
+     * @return $this
+     */
+    public function setBlups(array $blups): static
+    {
+        if (is_null($blups)) {
+            throw new InvalidArgumentException('non-nullable blups cannot be null');
+        }
+        $this->container['blups'] = $blups;
+
+        return $this;
+    }
+
+    /**
+     * Gets born
+     *
+     * @return string
+     */
+    public function getBorn(): string
+    {
+        return $this->container['born'];
+    }
+
+    /**
+     * Sets born
+     *
+     * @param string $born born
+     *
+     * @return $this
+     */
+    public function setBorn(string $born): static
+    {
+        if (is_null($born)) {
+            throw new InvalidArgumentException('non-nullable born cannot be null');
+        }
+        $this->container['born'] = $born;
+
+        return $this;
+    }
+
+    /**
+     * Gets droneParent
+     *
+     * @return string
+     */
+    public function getDroneParent(): string
+    {
+        return $this->container['droneParent'];
+    }
+
+    /**
+     * Sets droneParent
+     *
+     * @param string $droneParent droneParent
+     *
+     * @return $this
+     */
+    public function setDroneParent(string $droneParent): static
+    {
+        if (is_null($droneParent)) {
+            throw new InvalidArgumentException('non-nullable droneParent cannot be null');
+        }
+        $this->container['droneParent'] = $droneParent;
+
+        return $this;
+    }
+
+    /**
+     * Gets methods
+     *
+     * @return array<string,\Beekube\BlupSDK\Models\MethodsValue>
+     */
+    public function getMethods(): array
+    {
+        return $this->container['methods'];
+    }
+
+    /**
+     * Sets methods
+     *
+     * @param array<string,\Beekube\BlupSDK\Models\MethodsValue> $methods methods
+     *
+     * @return $this
+     */
+    public function setMethods(array $methods): static
+    {
+        if (is_null($methods)) {
+            throw new InvalidArgumentException('non-nullable methods cannot be null');
+        }
+        $this->container['methods'] = $methods;
+
+        return $this;
+    }
+
+    /**
+     * Gets queenbee
+     *
+     * @return string
+     */
+    public function getQueenbee(): string
+    {
+        return $this->container['queenbee'];
+    }
+
+    /**
+     * Sets queenbee
+     *
+     * @param string $queenbee queenbee
+     *
+     * @return $this
+     */
+    public function setQueenbee(string $queenbee): static
+    {
+        if (is_null($queenbee)) {
+            throw new InvalidArgumentException('non-nullable queenbee cannot be null');
+        }
+        $this->container['queenbee'] = $queenbee;
+
+        return $this;
+    }
+
+    /**
+     * Gets queenbeeParent
+     *
+     * @return string
+     */
+    public function getQueenbeeParent(): string
+    {
+        return $this->container['queenbeeParent'];
+    }
+
+    /**
+     * Sets queenbeeParent
+     *
+     * @param string $queenbeeParent queenbeeParent
+     *
+     * @return $this
+     */
+    public function setQueenbeeParent(string $queenbeeParent): static
+    {
+        if (is_null($queenbeeParent)) {
+            throw new InvalidArgumentException('non-nullable queenbeeParent cannot be null');
+        }
+        $this->container['queenbeeParent'] = $queenbeeParent;
 
         return $this;
     }

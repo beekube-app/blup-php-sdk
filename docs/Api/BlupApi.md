@@ -4,14 +4,14 @@ All URIs are relative to https://mellifera.beekube.com, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**blupBlupPost()**](BlupApi.md#blupBlupPost) | **POST** /blup | Perform BLUP calculation |
+| [**calulateBlupPost()**](BlupApi.md#calulateBlupPost) | **POST** /blup | Perform BLUP calculation |
 | [**welcomeGet()**](BlupApi.md#welcomeGet) | **GET** / | Welcome endpoint |
 
 
-## `blupBlupPost()`
+## `calulateBlupPost()`
 
 ```php
-blupBlupPost($bLUPInput)
+calulateBlupPost($bLUPInput): \Beekube\BlupSDK\Models\BLUPOutput
 ```
 
 Perform BLUP calculation
@@ -32,9 +32,10 @@ $apiInstance = new Beekube\BlupSDK\Api\BlupApi(
 $bLUPInput = new \Beekube\BlupSDK\Models\BLUPInput(); // \Beekube\BlupSDK\Models\BLUPInput
 
 try {
-    $apiInstance->blupBlupPost($bLUPInput);
+    $result = $apiInstance->calulateBlupPost($bLUPInput);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BlupApi->blupBlupPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BlupApi->calulateBlupPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -46,7 +47,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Beekube\BlupSDK\Models\BLUPOutput**](../Model/BLUPOutput.md)
 
 ### Authorization
 
@@ -64,7 +65,7 @@ No authorization required
 ## `welcomeGet()`
 
 ```php
-welcomeGet()
+welcomeGet(): \Beekube\BlupSDK\Models\WelcomeResponse
 ```
 
 Welcome endpoint
@@ -84,7 +85,8 @@ $apiInstance = new Beekube\BlupSDK\Api\BlupApi(
 );
 
 try {
-    $apiInstance->welcomeGet();
+    $result = $apiInstance->welcomeGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BlupApi->welcomeGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -96,7 +98,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Beekube\BlupSDK\Models\WelcomeResponse**](../Model/WelcomeResponse.md)
 
 ### Authorization
 
@@ -105,7 +107,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -8,7 +8,7 @@ gitRepoId: blup-php-sdk
 
 # Package configuration
 invokerPackage: Beekube\BlupSDK
-artifactVersion: 1.0.0
+artifactVersion: 1.0.1
 packageName: blup-php-sdk
 srcBasePath: src
 variableNamingConvention: camelCase
@@ -18,7 +18,7 @@ serverVariables:
   host: https://mellifera.beekube.com
 
 # HTTP client configuration
-httpUserAgent: Beekube-Blup/1.0.0
+httpUserAgent: Beekube-Blup/1.0.1
 
 # PHP specific configurations
 modelPackage: Models
@@ -28,7 +28,7 @@ composerProjectName: blup-php-sdk
 
 # Composer metadata
 artifactDescription: "SDK PHP pour l'API BLUP de Beekube - Calcul génétique des abeilles mellifères"
-infoEmail: tech@beekube.com
+infoEmail: contact@beekube.com
 infoName: "Beekube"
 infoUrl: https://www.beekube.com
 licenseName: MIT

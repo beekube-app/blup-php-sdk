@@ -1,6 +1,6 @@
 <?php
 /**
- * BLUPInput
+ * ErrorResponse
  *
  * PHP version 8.1
  *
@@ -35,14 +35,14 @@ use ReturnTypeWillChange;
 use Beekube\BlupSDK\ObjectSerializer;
 
 /**
- * BLUPInput Class Doc Comment
+ * ErrorResponse Class Doc Comment
  *
  * @package  Beekube\BlupSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
+class ErrorResponse implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'BLUPInput';
+    protected static string $openAPIModelName = 'ErrorResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,11 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'data' => '\Beekube\BlupSDK\Models\QueenBeeInput[]',
-        'evaluate' => 'int[]',
-        'evaluateElimination' => 'int[]',
-        'exploitation' => 'int'
+        'error' => 'string',
+        'message' => 'string',
+        'output' => 'string',
+        'results' => 'object',
+        'status' => 'string'
     ];
 
     /**
@@ -71,10 +72,11 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'data' => null,
-        'evaluate' => null,
-        'evaluateElimination' => null,
-        'exploitation' => null
+        'error' => null,
+        'message' => null,
+        'output' => null,
+        'results' => null,
+        'status' => null
     ];
 
     /**
@@ -83,10 +85,11 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'evaluate' => false,
-        'evaluateElimination' => false,
-        'exploitation' => false
+        'error' => false,
+        'message' => false,
+        'output' => false,
+        'results' => false,
+        'status' => false
     ];
 
     /**
@@ -175,10 +178,11 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'data' => 'data',
-        'evaluate' => 'evaluate',
-        'evaluateElimination' => 'evaluate_elimination',
-        'exploitation' => 'exploitation'
+        'error' => 'error',
+        'message' => 'message',
+        'output' => 'output',
+        'results' => 'results',
+        'status' => 'status'
     ];
 
     /**
@@ -187,10 +191,11 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $setters = [
-        'data' => 'setData',
-        'evaluate' => 'setEvaluate',
-        'evaluateElimination' => 'setEvaluateElimination',
-        'exploitation' => 'setExploitation'
+        'error' => 'setError',
+        'message' => 'setMessage',
+        'output' => 'setOutput',
+        'results' => 'setResults',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -199,10 +204,11 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $getters = [
-        'data' => 'getData',
-        'evaluate' => 'getEvaluate',
-        'evaluateElimination' => 'getEvaluateElimination',
-        'exploitation' => 'getExploitation'
+        'error' => 'getError',
+        'message' => 'getMessage',
+        'output' => 'getOutput',
+        'results' => 'getResults',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -261,10 +267,11 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('evaluate', $data ?? [], null);
-        $this->setIfExists('evaluateElimination', $data ?? [], null);
-        $this->setIfExists('exploitation', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('output', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -294,17 +301,20 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['error'] === null) {
+            $invalidProperties[] = "'error' can't be null";
         }
-        if ($this->container['evaluate'] === null) {
-            $invalidProperties[] = "'evaluate' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['evaluateElimination'] === null) {
-            $invalidProperties[] = "'evaluateElimination' can't be null";
+        if ($this->container['output'] === null) {
+            $invalidProperties[] = "'output' can't be null";
         }
-        if ($this->container['exploitation'] === null) {
-            $invalidProperties[] = "'exploitation' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -322,109 +332,136 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
 
 
     /**
-     * Gets data
+     * Gets error
      *
-     * @return \Beekube\BlupSDK\Models\QueenBeeInput[]
+     * @return string
      */
-    public function getData(): array
+    public function getError(): string
     {
-        return $this->container['data'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets data
+     * Sets error
      *
-     * @param \Beekube\BlupSDK\Models\QueenBeeInput[] $data data
+     * @param string $error error
      *
      * @return $this
      */
-    public function setData(array $data): static
+    public function setError(string $error): static
     {
-        if (is_null($data)) {
-            throw new InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($error)) {
+            throw new InvalidArgumentException('non-nullable error cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['error'] = $error;
 
         return $this;
     }
 
     /**
-     * Gets evaluate
+     * Gets message
      *
-     * @return int[]
+     * @return string
      */
-    public function getEvaluate(): array
+    public function getMessage(): string
     {
-        return $this->container['evaluate'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets evaluate
+     * Sets message
      *
-     * @param int[] $evaluate evaluate
+     * @param string $message message
      *
      * @return $this
      */
-    public function setEvaluate(array $evaluate): static
+    public function setMessage(string $message): static
     {
-        if (is_null($evaluate)) {
-            throw new InvalidArgumentException('non-nullable evaluate cannot be null');
+        if (is_null($message)) {
+            throw new InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['evaluate'] = $evaluate;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets evaluateElimination
+     * Gets output
      *
-     * @return int[]
+     * @return string
      */
-    public function getEvaluateElimination(): array
+    public function getOutput(): string
     {
-        return $this->container['evaluateElimination'];
+        return $this->container['output'];
     }
 
     /**
-     * Sets evaluateElimination
+     * Sets output
      *
-     * @param int[] $evaluateElimination evaluateElimination
+     * @param string $output output
      *
      * @return $this
      */
-    public function setEvaluateElimination(array $evaluateElimination): static
+    public function setOutput(string $output): static
     {
-        if (is_null($evaluateElimination)) {
-            throw new InvalidArgumentException('non-nullable evaluateElimination cannot be null');
+        if (is_null($output)) {
+            throw new InvalidArgumentException('non-nullable output cannot be null');
         }
-        $this->container['evaluateElimination'] = $evaluateElimination;
+        $this->container['output'] = $output;
 
         return $this;
     }
 
     /**
-     * Gets exploitation
+     * Gets results
      *
-     * @return int
+     * @return object
      */
-    public function getExploitation(): int
+    public function getResults(): object
     {
-        return $this->container['exploitation'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets exploitation
+     * Sets results
      *
-     * @param int $exploitation exploitation
+     * @param object $results results
      *
      * @return $this
      */
-    public function setExploitation(int $exploitation): static
+    public function setResults(object $results): static
     {
-        if (is_null($exploitation)) {
-            throw new InvalidArgumentException('non-nullable exploitation cannot be null');
+        if (is_null($results)) {
+            throw new InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['exploitation'] = $exploitation;
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return $this
+     */
+    public function setStatus(string $status): static
+    {
+        if (is_null($status)) {
+            throw new InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

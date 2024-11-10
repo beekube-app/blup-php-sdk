@@ -1,6 +1,6 @@
 <?php
 /**
- * BLUPInput
+ * HeritabilityStats
  *
  * PHP version 8.1
  *
@@ -35,14 +35,14 @@ use ReturnTypeWillChange;
 use Beekube\BlupSDK\ObjectSerializer;
 
 /**
- * BLUPInput Class Doc Comment
+ * HeritabilityStats Class Doc Comment
  *
  * @package  Beekube\BlupSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
+class HeritabilityStats implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'BLUPInput';
+    protected static string $openAPIModelName = 'HeritabilityStats';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,12 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'data' => '\Beekube\BlupSDK\Models\QueenBeeInput[]',
-        'evaluate' => 'int[]',
-        'evaluateElimination' => 'int[]',
-        'exploitation' => 'int'
+        'heritability' => 'float',
+        'se' => 'float',
+        'vAdditiveDrone' => 'float',
+        'vAdditiveQueen' => 'float',
+        'vColony' => 'float',
+        'vResidual' => 'float'
     ];
 
     /**
@@ -71,10 +73,12 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'data' => null,
-        'evaluate' => null,
-        'evaluateElimination' => null,
-        'exploitation' => null
+        'heritability' => null,
+        'se' => null,
+        'vAdditiveDrone' => null,
+        'vAdditiveQueen' => null,
+        'vColony' => null,
+        'vResidual' => null
     ];
 
     /**
@@ -83,10 +87,12 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'evaluate' => false,
-        'evaluateElimination' => false,
-        'exploitation' => false
+        'heritability' => false,
+        'se' => false,
+        'vAdditiveDrone' => false,
+        'vAdditiveQueen' => false,
+        'vColony' => false,
+        'vResidual' => false
     ];
 
     /**
@@ -175,10 +181,12 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'data' => 'data',
-        'evaluate' => 'evaluate',
-        'evaluateElimination' => 'evaluate_elimination',
-        'exploitation' => 'exploitation'
+        'heritability' => 'heritability',
+        'se' => 'se',
+        'vAdditiveDrone' => 'v_additive_drone',
+        'vAdditiveQueen' => 'v_additive_queen',
+        'vColony' => 'v_colony',
+        'vResidual' => 'v_residual'
     ];
 
     /**
@@ -187,10 +195,12 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $setters = [
-        'data' => 'setData',
-        'evaluate' => 'setEvaluate',
-        'evaluateElimination' => 'setEvaluateElimination',
-        'exploitation' => 'setExploitation'
+        'heritability' => 'setHeritability',
+        'se' => 'setSe',
+        'vAdditiveDrone' => 'setVAdditiveDrone',
+        'vAdditiveQueen' => 'setVAdditiveQueen',
+        'vColony' => 'setVColony',
+        'vResidual' => 'setVResidual'
     ];
 
     /**
@@ -199,10 +209,12 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $getters = [
-        'data' => 'getData',
-        'evaluate' => 'getEvaluate',
-        'evaluateElimination' => 'getEvaluateElimination',
-        'exploitation' => 'getExploitation'
+        'heritability' => 'getHeritability',
+        'se' => 'getSe',
+        'vAdditiveDrone' => 'getVAdditiveDrone',
+        'vAdditiveQueen' => 'getVAdditiveQueen',
+        'vColony' => 'getVColony',
+        'vResidual' => 'getVResidual'
     ];
 
     /**
@@ -261,10 +273,12 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('evaluate', $data ?? [], null);
-        $this->setIfExists('evaluateElimination', $data ?? [], null);
-        $this->setIfExists('exploitation', $data ?? [], null);
+        $this->setIfExists('heritability', $data ?? [], null);
+        $this->setIfExists('se', $data ?? [], null);
+        $this->setIfExists('vAdditiveDrone', $data ?? [], null);
+        $this->setIfExists('vAdditiveQueen', $data ?? [], null);
+        $this->setIfExists('vColony', $data ?? [], null);
+        $this->setIfExists('vResidual', $data ?? [], null);
     }
 
     /**
@@ -294,17 +308,23 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['heritability'] === null) {
+            $invalidProperties[] = "'heritability' can't be null";
         }
-        if ($this->container['evaluate'] === null) {
-            $invalidProperties[] = "'evaluate' can't be null";
+        if ($this->container['se'] === null) {
+            $invalidProperties[] = "'se' can't be null";
         }
-        if ($this->container['evaluateElimination'] === null) {
-            $invalidProperties[] = "'evaluateElimination' can't be null";
+        if ($this->container['vAdditiveDrone'] === null) {
+            $invalidProperties[] = "'vAdditiveDrone' can't be null";
         }
-        if ($this->container['exploitation'] === null) {
-            $invalidProperties[] = "'exploitation' can't be null";
+        if ($this->container['vAdditiveQueen'] === null) {
+            $invalidProperties[] = "'vAdditiveQueen' can't be null";
+        }
+        if ($this->container['vColony'] === null) {
+            $invalidProperties[] = "'vColony' can't be null";
+        }
+        if ($this->container['vResidual'] === null) {
+            $invalidProperties[] = "'vResidual' can't be null";
         }
         return $invalidProperties;
     }
@@ -322,109 +342,163 @@ class BLUPInput implements ModelInterface, ArrayAccess, JsonSerializable
 
 
     /**
-     * Gets data
+     * Gets heritability
      *
-     * @return \Beekube\BlupSDK\Models\QueenBeeInput[]
+     * @return float
      */
-    public function getData(): array
+    public function getHeritability(): float
     {
-        return $this->container['data'];
+        return $this->container['heritability'];
     }
 
     /**
-     * Sets data
+     * Sets heritability
      *
-     * @param \Beekube\BlupSDK\Models\QueenBeeInput[] $data data
+     * @param float $heritability heritability
      *
      * @return $this
      */
-    public function setData(array $data): static
+    public function setHeritability(float $heritability): static
     {
-        if (is_null($data)) {
-            throw new InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($heritability)) {
+            throw new InvalidArgumentException('non-nullable heritability cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['heritability'] = $heritability;
 
         return $this;
     }
 
     /**
-     * Gets evaluate
+     * Gets se
      *
-     * @return int[]
+     * @return float
      */
-    public function getEvaluate(): array
+    public function getSe(): float
     {
-        return $this->container['evaluate'];
+        return $this->container['se'];
     }
 
     /**
-     * Sets evaluate
+     * Sets se
      *
-     * @param int[] $evaluate evaluate
+     * @param float $se se
      *
      * @return $this
      */
-    public function setEvaluate(array $evaluate): static
+    public function setSe(float $se): static
     {
-        if (is_null($evaluate)) {
-            throw new InvalidArgumentException('non-nullable evaluate cannot be null');
+        if (is_null($se)) {
+            throw new InvalidArgumentException('non-nullable se cannot be null');
         }
-        $this->container['evaluate'] = $evaluate;
+        $this->container['se'] = $se;
 
         return $this;
     }
 
     /**
-     * Gets evaluateElimination
+     * Gets vAdditiveDrone
      *
-     * @return int[]
+     * @return float
      */
-    public function getEvaluateElimination(): array
+    public function getVAdditiveDrone(): float
     {
-        return $this->container['evaluateElimination'];
+        return $this->container['vAdditiveDrone'];
     }
 
     /**
-     * Sets evaluateElimination
+     * Sets vAdditiveDrone
      *
-     * @param int[] $evaluateElimination evaluateElimination
+     * @param float $vAdditiveDrone vAdditiveDrone
      *
      * @return $this
      */
-    public function setEvaluateElimination(array $evaluateElimination): static
+    public function setVAdditiveDrone(float $vAdditiveDrone): static
     {
-        if (is_null($evaluateElimination)) {
-            throw new InvalidArgumentException('non-nullable evaluateElimination cannot be null');
+        if (is_null($vAdditiveDrone)) {
+            throw new InvalidArgumentException('non-nullable vAdditiveDrone cannot be null');
         }
-        $this->container['evaluateElimination'] = $evaluateElimination;
+        $this->container['vAdditiveDrone'] = $vAdditiveDrone;
 
         return $this;
     }
 
     /**
-     * Gets exploitation
+     * Gets vAdditiveQueen
      *
-     * @return int
+     * @return float
      */
-    public function getExploitation(): int
+    public function getVAdditiveQueen(): float
     {
-        return $this->container['exploitation'];
+        return $this->container['vAdditiveQueen'];
     }
 
     /**
-     * Sets exploitation
+     * Sets vAdditiveQueen
      *
-     * @param int $exploitation exploitation
+     * @param float $vAdditiveQueen vAdditiveQueen
      *
      * @return $this
      */
-    public function setExploitation(int $exploitation): static
+    public function setVAdditiveQueen(float $vAdditiveQueen): static
     {
-        if (is_null($exploitation)) {
-            throw new InvalidArgumentException('non-nullable exploitation cannot be null');
+        if (is_null($vAdditiveQueen)) {
+            throw new InvalidArgumentException('non-nullable vAdditiveQueen cannot be null');
         }
-        $this->container['exploitation'] = $exploitation;
+        $this->container['vAdditiveQueen'] = $vAdditiveQueen;
+
+        return $this;
+    }
+
+    /**
+     * Gets vColony
+     *
+     * @return float
+     */
+    public function getVColony(): float
+    {
+        return $this->container['vColony'];
+    }
+
+    /**
+     * Sets vColony
+     *
+     * @param float $vColony vColony
+     *
+     * @return $this
+     */
+    public function setVColony(float $vColony): static
+    {
+        if (is_null($vColony)) {
+            throw new InvalidArgumentException('non-nullable vColony cannot be null');
+        }
+        $this->container['vColony'] = $vColony;
+
+        return $this;
+    }
+
+    /**
+     * Gets vResidual
+     *
+     * @return float
+     */
+    public function getVResidual(): float
+    {
+        return $this->container['vResidual'];
+    }
+
+    /**
+     * Sets vResidual
+     *
+     * @param float $vResidual vResidual
+     *
+     * @return $this
+     */
+    public function setVResidual(float $vResidual): static
+    {
+        if (is_null($vResidual)) {
+            throw new InvalidArgumentException('non-nullable vResidual cannot be null');
+        }
+        $this->container['vResidual'] = $vResidual;
 
         return $this;
     }
