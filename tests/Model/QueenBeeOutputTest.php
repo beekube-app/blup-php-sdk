@@ -79,63 +79,9 @@ class QueenBeeOutputTest extends TestCase
     }
 
     /**
-     * Test attribute "apiaryDefault"
-     */
-    public function testPropertyApiaryDefault()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "blups"
      */
     public function testPropertyBlups()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "born"
-     */
-    public function testPropertyBorn()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "droneParent"
-     */
-    public function testPropertyDroneParent()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "methods"
-     */
-    public function testPropertyMethods()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "queenbee"
-     */
-    public function testPropertyQueenbee()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "queenbeeParent"
-     */
-    public function testPropertyQueenbeeParent()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -5,10 +5,12 @@ inputSpec: https://mellifera.beekube.com/openapi/openapi.json
 gitHost: github.com
 gitUserId: beekube-app
 gitRepoId: blup-php-sdk
+templateDirectory: template/php-nextgen
+templateDir: template/php-nextgen
 
 # Package configuration
 invokerPackage: Beekube\BlupSDK
-artifactVersion: 1.0.1
+artifactVersion: 1.0.2
 packageName: blup-php-sdk
 srcBasePath: src
 variableNamingConvention: camelCase
@@ -18,7 +20,7 @@ serverVariables:
   host: https://mellifera.beekube.com
 
 # HTTP client configuration
-httpUserAgent: Beekube-Blup/1.0.1
+httpUserAgent: Beekube-Blup/1.0.2
 
 # PHP specific configurations
 modelPackage: Models
@@ -55,7 +57,7 @@ sortParamsByRequiredFlag: true
 sortModelPropertiesByRequiredFlag: true
 ensureUniqueParams: true
 hideGenerationTimestamp: true
-legacyDiscriminatorBehavior: false
+legacyDiscriminatorBehavior: true
 
 # PHP quality settings
 phpLegacySupport: false
