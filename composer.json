@@ -1,6 +1,6 @@
 {
     "name": "beekube-app/blup-php-sdk",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "SDK PHP pour l'API BLUP de Beekube - Calcul génétique des abeilles mellifères",
     "keywords": [
         "beekube",
