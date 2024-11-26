@@ -1,4 +1,4 @@
-# {{packageName}}
+# {{artifactDescription}}
 
 {{#appDescriptionWithNewLines}}
 {{{.}}}
@@ -20,14 +20,8 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
 
 ```json
 {
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}.git"
-    }
-  ],
   "require": {
-    "{{gitUserId}}/{{gitRepoId}}": "*@dev"
+    "{{gitUserId}}/{{gitRepoId}}": "*"
   }
 }
 ```

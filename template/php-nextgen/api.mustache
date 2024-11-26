@@ -26,6 +26,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use {{invokerPackage}}\ApiException;
 use {{invokerPackage}}\Configuration;
 use {{invokerPackage}}\HeaderSelector;
@@ -238,7 +239,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{operationId}}}'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|GuzzleException
      * @return array of {{#returnType}}{{#responses}}{{#dataType}}{{^-first}}|{{/-first}}{{/dataType}}{{{dataType}}}{{/responses}}{{/returnType}}{{^returnType}}null{{/returnType}}, HTTP status code, HTTP response headers (array of strings)
     {{#isDeprecated}}
      * @deprecated
@@ -515,6 +516,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/servers}}
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{operationId}}}'] to see the possible values for this operation
      *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return PromiseInterface
     {{#isDeprecated}}

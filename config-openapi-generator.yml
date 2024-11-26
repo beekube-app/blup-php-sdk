@@ -10,7 +10,7 @@ templateDir: template/php-nextgen
 
 # Package configuration
 invokerPackage: Beekube\BlupSDK
-artifactVersion: 1.0.3
+artifactVersion: 1.0.4
 packageName: blup-php-sdk
 srcBasePath: src
 variableNamingConvention: camelCase
@@ -20,7 +20,7 @@ serverVariables:
   host: https://mellifera.beekube.com
 
 # HTTP client configuration
-httpUserAgent: Beekube-Blup/1.0.2
+httpUserAgent: Beekube-Blup/1.0
 
 # PHP specific configurations
 modelPackage: Models
@@ -63,3 +63,9 @@ legacyDiscriminatorBehavior: true
 phpLegacySupport: false
 phpUnitVer: 9.5.0
 disallowAdditionalPropertiesIfNotPresent: false
+
+files:
+  model_abstract.mustache:
+    destinationFilename: src/Models/AbstractModel.php
+    templateType: "SupportingFiles"
+
