@@ -1,6 +1,6 @@
 {
     "name": "beekube-app/blup-php-sdk",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Official Brevo provided RESTFul API V3 php library",
     "keywords": [
         "beekube",

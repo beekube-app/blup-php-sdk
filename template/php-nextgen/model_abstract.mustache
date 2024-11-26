@@ -56,7 +56,7 @@ abstract class AbstractModel implements ModelInterface, ArrayAccess, JsonSeriali
      */
     public static function openAPITypes(): array
     {
-        return self::$openAPITypes;
+        return static::$openAPITypes;
     }
 
     /**
@@ -66,7 +66,7 @@ abstract class AbstractModel implements ModelInterface, ArrayAccess, JsonSeriali
      */
     public static function openAPIFormats(): array
     {
-        return self::$openAPIFormats;
+        return static::$openAPIFormats;
     }
 
     /**
@@ -76,7 +76,7 @@ abstract class AbstractModel implements ModelInterface, ArrayAccess, JsonSeriali
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables;
+        return static::$openAPINullables;
     }
 
 
@@ -108,7 +108,7 @@ abstract class AbstractModel implements ModelInterface, ArrayAccess, JsonSeriali
      */
     public static function isNullable(string $property): bool
     {
-        return self::openAPINullables()[$property] ?? false;
+        return static::openAPINullables()[$property] ?? false;
     }
 
     /**
@@ -133,7 +133,7 @@ abstract class AbstractModel implements ModelInterface, ArrayAccess, JsonSeriali
     */
     protected function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+        if (static::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
             $this->openAPINullablesSetToNull[] = $variableName;
         }
 
@@ -249,7 +249,7 @@ abstract class AbstractModel implements ModelInterface, ArrayAccess, JsonSeriali
      */
     public function getModelName(): string
     {
-        return self::$openAPIModelName;
+        return static::$openAPIModelName;
     }
 
 }
