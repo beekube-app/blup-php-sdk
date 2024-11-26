@@ -1,7 +1,7 @@
 {
     "name": "beekube-app/blup-php-sdk",
-    "version": "1.0.3",
-    "description": "SDK PHP pour l'API BLUP de Beekube - Calcul génétique des abeilles mellifères",
+    "version": "1.0.4",
+    "description": "Official Brevo provided RESTFul API V3 php library",
     "keywords": [
         "beekube",
         "blup",
@@ -19,10 +19,6 @@
         {
             "name": "Beekube",
             "homepage": "https://beekube.com"
-        },
-        {
-            "name": "OpenAPI-Generator contributors",
-            "homepage": "https://openapi-generator.tech"
         }
     ],
     "require": {

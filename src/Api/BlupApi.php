@@ -36,6 +36,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use Beekube\BlupSDK\ApiException;
 use Beekube\BlupSDK\Configuration;
 use Beekube\BlupSDK\HeaderSelector;
@@ -156,7 +157,7 @@ class BlupApi
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['calulateBlupPost'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|GuzzleException
      * @return array of \Beekube\BlupSDK\Models\BLUPOutput|\Beekube\BlupSDK\Models\ValidationErrorModel[]|\Beekube\BlupSDK\Models\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function calulateBlupPostWithHttpInfo(
@@ -377,6 +378,7 @@ class BlupApi
      * @param  \Beekube\BlupSDK\Models\BLUPInput $bLUPInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['calulateBlupPost'] to see the possible values for this operation
      *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
@@ -545,7 +547,7 @@ class BlupApi
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['welcomeGet'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|GuzzleException
      * @return array of \Beekube\BlupSDK\Models\WelcomeResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function welcomeGetWithHttpInfo(
@@ -692,6 +694,7 @@ class BlupApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['welcomeGet'] to see the possible values for this operation
      *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */

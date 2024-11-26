@@ -21,6 +21,7 @@ src/Api/BlupApi.php
 src/ApiException.php
 src/Configuration.php
 src/HeaderSelector.php
+src/Models/AbstractModel.php
 src/Models/BLUPInput.php
 src/Models/BLUPOutput.php
 src/Models/BLUPResultOutput.php
