@@ -1,6 +1,6 @@
 <?php
 /**
- * BLUPOutput
+ * MethodsValue
  *
  * PHP version 8.1
  *
@@ -35,14 +35,14 @@ use ReturnTypeWillChange;
 use Beekube\BlupSDK\ObjectSerializer;
 
 /**
- * BLUPOutput Class Doc Comment
+ * MethodsValue Class Doc Comment
  *
  * @package  Beekube\BlupSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class BLUPOutput extends AbstractModel
+class MethodsValue extends AbstractModel
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class BLUPOutput extends AbstractModel
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'BLUPOutput';
+    protected static string $openAPIModelName = 'Methods_value';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,7 @@ class BLUPOutput extends AbstractModel
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'results' => '\Beekube\BlupSDK\Models\Results',
-        'status' => 'string'
+        
     ];
 
     /**
@@ -69,8 +68,7 @@ class BLUPOutput extends AbstractModel
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'results' => null,
-        'status' => null
+        
     ];
 
     /**
@@ -79,8 +77,7 @@ class BLUPOutput extends AbstractModel
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'results' => false,
-        'status' => false
+        
     ];
 
     /**
@@ -97,8 +94,7 @@ class BLUPOutput extends AbstractModel
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'results' => 'results',
-        'status' => 'status'
+        
     ];
 
     /**
@@ -107,8 +103,7 @@ class BLUPOutput extends AbstractModel
      * @var array<string, string>
      */
     protected static array $setters = [
-        'results' => 'setResults',
-        'status' => 'setStatus'
+        
     ];
 
     /**
@@ -117,8 +112,7 @@ class BLUPOutput extends AbstractModel
      * @var array<string, string>
      */
     protected static array $getters = [
-        'results' => 'getResults',
-        'status' => 'getStatus'
+        
     ];
 
     /**
@@ -167,8 +161,6 @@ class BLUPOutput extends AbstractModel
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('results', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -180,67 +172,7 @@ class BLUPOutput extends AbstractModel
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         return $invalidProperties;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \Beekube\BlupSDK\Models\Results
-     */
-    public function getResults(): \Beekube\BlupSDK\Models\Results
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \Beekube\BlupSDK\Models\Results $results results
-     *
-     * @return $this
-     */
-    public function setResults(\Beekube\BlupSDK\Models\Results $results): static
-    {
-        if (is_null($results)) {
-            throw new InvalidArgumentException('non-nullable results cannot be null');
-        }
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return $this
-     */
-    public function setStatus(string $status): static
-    {
-        if (is_null($status)) {
-            throw new InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
-
-        return $this;
     }
 }
 
