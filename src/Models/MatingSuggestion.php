@@ -37,7 +37,6 @@ use Beekube\BlupSDK\ObjectSerializer;
 /**
  * MatingSuggestion Class Doc Comment
  *
- * @description https://spec.openapis.org/oas/v3.1.0#contact-object
  * @package  Beekube\BlupSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

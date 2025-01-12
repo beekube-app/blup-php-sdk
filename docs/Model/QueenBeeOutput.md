@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **apiaryDefault** | **int** |  |
-**blups** | [**array<string,\Beekube\BlupSDK\Models\BlupsValue>**](BlupsValue.md) | BLUP values for different criteria |
+**blups** | **array<string,mixed>** | BLUP values for different criteria |
 **born** | **string** |  |
 **droneParent** | **string** |  |
 **methods** | [**array<string,\Beekube\BlupSDK\Models\MethodsValue>**](MethodsValue.md) | Methods used for calculations |

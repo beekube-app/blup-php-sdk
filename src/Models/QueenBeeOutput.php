@@ -60,7 +60,7 @@ class QueenBeeOutput extends AbstractModel
       */
     protected static array $openAPITypes = [
         'apiaryDefault' => 'int',
-        'blups' => 'array<string,\Beekube\BlupSDK\Models\BlupsValue>',
+        'blups' => 'array<string,mixed>',
         'born' => 'string',
         'droneParent' => 'string',
         'methods' => 'array<string,\Beekube\BlupSDK\Models\MethodsValue>',
@@ -300,7 +300,7 @@ class QueenBeeOutput extends AbstractModel
     /**
      * Gets blups
      *
-     * @return array<string,\Beekube\BlupSDK\Models\BlupsValue>
+     * @return array<string,mixed>
      */
     public function getBlups(): array
     {
@@ -310,7 +310,7 @@ class QueenBeeOutput extends AbstractModel
     /**
      * Sets blups
      *
-     * @param array<string,\Beekube\BlupSDK\Models\BlupsValue> $blups BLUP values for different criteria
+     * @param array<string,mixed> $blups BLUP values for different criteria
      *
      * @return $this
      */

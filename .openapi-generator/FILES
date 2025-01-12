@@ -7,7 +7,6 @@ docs/Api/BlupApi.md
 docs/Model/BLUPInput.md
 docs/Model/BLUPOutput.md
 docs/Model/BLUPResultOutput.md
-docs/Model/BlupsValue.md
 docs/Model/ErrorResponse.md
 docs/Model/Evaluation.md
 docs/Model/HeritabilityStats.md
@@ -28,7 +27,6 @@ src/Models/AbstractModel.php
 src/Models/BLUPInput.php
 src/Models/BLUPOutput.php
 src/Models/BLUPResultOutput.php
-src/Models/BlupsValue.php
 src/Models/ErrorResponse.php
 src/Models/Evaluation.php
 src/Models/HeritabilityStats.php
@@ -41,6 +39,3 @@ src/Models/Results.php
 src/Models/ValidationErrorModel.php
 src/Models/WelcomeResponse.php
 src/ObjectSerializer.php
-tests/Model/BlupsValueTest.php
-tests/Model/MatingSuggestionTest.php
-tests/Model/MethodsValueTest.php

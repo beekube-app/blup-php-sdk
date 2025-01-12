@@ -10,7 +10,7 @@ templateDir: template/php-nextgen
 
 # Package configuration
 invokerPackage: Beekube\BlupSDK
-artifactVersion: 1.0.5
+artifactVersion: 1.0.7
 packageName: blup-php-sdk
 srcBasePath: src
 variableNamingConvention: camelCase
