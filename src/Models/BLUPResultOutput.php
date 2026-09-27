@@ -165,7 +165,7 @@ class BLUPResultOutput extends AbstractModel
      *
      * @param array $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('blup', $data ?? [], null);
         $this->setIfExists('heritabilities', $data ?? [], null);

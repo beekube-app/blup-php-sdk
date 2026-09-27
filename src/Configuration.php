@@ -429,7 +429,7 @@ class Configuration
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: 1.0.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 1.0.7' . PHP_EOL;
+        $report .= '    SDK Package Version: 1.0.8' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
@@ -483,7 +483,7 @@ class Configuration
     * @param array|null $variables    hash of variable and the corresponding value (optional)
     * @return string URL based on host settings
     */
-    public static function getHostString(array $hostSettings, int $hostIndex, array $variables = null): string
+    public static function getHostString(array $hostSettings, int $hostIndex, ?array $variables = null): string
     {
         if (null === $variables) {
             $variables = [];
