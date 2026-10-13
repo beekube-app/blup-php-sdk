@@ -307,9 +307,10 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
             array_push($this->openAPINullablesSetToNull, '{{name}}');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('{{name}}', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
+            {{! $nullKey et non $index : une propriété nommée « index » écraserait son propre paramètre. }}
+            $nullKey = array_search('{{name}}', $nullablesSetToNull);
+            if ($nullKey !== FALSE) {
+                unset($nullablesSetToNull[$nullKey]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
