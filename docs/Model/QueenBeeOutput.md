@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **blups** | **array<string,mixed>** | BLUP values for different criteria |
 **born** | **string** |  |
 **droneParent** | **string** |  |
-**methods** | [**array<string,\Beekube\BlupSDK\Models\MethodsValue>**](MethodsValue.md) | Methods used for calculations |
+**methods** | **array<string,string>** | Methods used for calculations |
 **queenbee** | **string** |  |
 **queenbeeParent** | **string** |  |
 **variety** | **string** |  |

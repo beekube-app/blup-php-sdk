@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **error** | **string** |  |
 **message** | **string** |  |
 **output** | **string** |  |
-**results** | **object** |  |
+**results** | **array<string,mixed>** |  |
 **status** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
