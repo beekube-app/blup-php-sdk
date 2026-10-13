@@ -8,8 +8,12 @@ use Beekube\BlupSDK\Models\BLUPOutput;
 use Beekube\BlupSDK\Models\BlupV2Input;
 use Beekube\BlupSDK\Models\BlupV2Output;
 use Beekube\BlupSDK\Models\CriterionIn;
+use Beekube\BlupSDK\Models\MatingOut;
+use Beekube\BlupSDK\Models\ModelInterface;
+use Beekube\BlupSDK\Models\RecordIn;
 use Beekube\BlupSDK\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * Contrat v2 (spec §5.1 / §5.2) : les exemples de la spec passent dans les deux sens,
@@ -123,6 +127,9 @@ final class BlupV2SerializationTest extends TestCase
         self::assertEquals(0.25, $json['criteria'][0]['h2']);
         self::assertIsFloat($json['criteria'][0]['repeatability']);
         self::assertEquals(0.3, $json['criteria'][0]['repeatability']);
+        // Le modèle porte un float (2.0) ; json_encode() l'écrit « 2 » (sans JSON_PRESERVE_ZERO_FRACTION),
+        // d'où un entier après le json_decode() ci-dessus : sur le fil, c'est un nombre JSON valide.
+        self::assertIsFloat($input->getCriteria()[0]->getQueenRatio());
         self::assertIsNumeric($json['criteria'][0]['queen_ratio']);
         self::assertEquals(2, $json['criteria'][0]['queen_ratio']);
         self::assertIsFloat($json['criteria'][0]['rg']);
@@ -210,5 +217,95 @@ final class BlupV2SerializationTest extends TestCase
         $criterion->setH2(null);
 
         self::assertNull($criterion->getH2());
+    }
+
+    public function testChampsDEnregistrementNullablesAcceptentNullSansSerialiserUnObjetVide(): void
+    {
+        $data = self::input()['records'][0];
+        self::assertSame(848, $data['evaluator']);
+
+        // Par les mutateurs, en remplaçant des valeurs renseignées.
+        /** @var RecordIn $record */
+        $record = self::toModel($data, RecordIn::class);
+        $record->setEvaluator(null)->setVisit(null)->setHiveType(null);
+
+        self::assertNull($record->getEvaluator());
+        self::assertNull($record->getVisit());
+        self::assertNull($record->getHiveType());
+
+        $json = json_encode(ObjectSerializer::sanitizeForSerialization($record));
+
+        // Comportement observé : le null est conservé tel quel, jamais remplacé par « {} ».
+        self::assertStringContainsString('"evaluator":null', $json);
+        self::assertStringContainsString('"visit":null', $json);
+        self::assertStringContainsString('"hive_type":null', $json);
+        self::assertStringNotContainsString('{}', $json);
+
+        // Par la désérialisation d'un JSON portant des null.
+        $data['evaluator'] = $data['visit'] = $data['hive_type'] = null;
+        /** @var RecordIn $fromJson */
+        $fromJson = self::toModel($data, RecordIn::class);
+        $decoded = json_decode(json_encode(ObjectSerializer::sanitizeForSerialization($fromJson)), true);
+
+        self::assertNull($fromJson->getEvaluator());
+        self::assertNull($fromJson->getVisit());
+        self::assertNull($fromJson->getHiveType());
+        foreach (['evaluator', 'visit', 'hive_type'] as $key) {
+            self::assertArrayHasKey($key, $decoded);
+            self::assertNull($decoded[$key]);
+        }
+    }
+
+    public function testIndexAttendusDUnAccouplementConserventLesValeursNulles(): void
+    {
+        $data = self::output()['matings'][0];
+        $data['expected_indexes'] = ['44' => 104.9, '45' => null, '46' => 105];
+
+        /** @var MatingOut $mating */
+        $mating = self::toModel($data, MatingOut::class);
+        $indexes = $mating->getExpectedIndexes();
+
+        self::assertCount(3, $indexes);
+        self::assertArrayHasKey('45', $indexes);
+        self::assertNull($indexes['45']);
+        self::assertIsFloat($indexes['44']);
+        self::assertEquals(104.9, $indexes['44']);
+        self::assertIsFloat($indexes['46']);
+        self::assertEquals(105, $indexes['46']);
+    }
+
+    public function testAucunModeleGenereNEstVide(): void
+    {
+        $fichiers = glob(dirname(__DIR__, 2) . '/src/Models/*.php');
+        self::assertNotEmpty($fichiers, 'Aucun fichier trouvé dans src/Models.');
+
+        $examines = 0;
+        $vides = [];
+        foreach ($fichiers as $fichier) {
+            $classe = 'Beekube\\BlupSDK\\Models\\' . basename($fichier, '.php');
+            self::assertTrue(
+                class_exists($classe) || interface_exists($classe),
+                sprintf('%s ne définit pas %s.', basename($fichier), $classe)
+            );
+
+            $reflexion = new ReflectionClass($classe);
+            // Les énumérations du générateur sont des enum PHP natifs, sans propriétés par construction.
+            if ($reflexion->isInterface() || $reflexion->isAbstract() || $reflexion->isEnum()
+                || !$reflexion->implementsInterface(ModelInterface::class)) {
+                continue;
+            }
+
+            ++$examines;
+            if ($classe::openAPITypes() === []) {
+                $vides[] = $reflexion->getShortName();
+            }
+        }
+
+        self::assertGreaterThan(0, $examines, 'Aucun modèle examiné : le test ne contrôle plus rien.');
+        self::assertSame(
+            [],
+            $vides,
+            'Modèles générés sans aucune propriété (anyOf mal lu par le générateur ?) : ' . implode(', ', $vides)
+        );
     }
 }
