@@ -23,3 +23,8 @@
 #!docs/README.md
 
 .gitignore
+
+# Fichiers maintenus à la main (ne pas régénérer)
+phpunit.xml.dist
+bin/**
+tests/V2/**
