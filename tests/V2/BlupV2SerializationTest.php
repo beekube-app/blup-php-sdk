@@ -188,6 +188,53 @@ final class BlupV2SerializationTest extends TestCase
         self::assertSame(44, $out->getWarnings()[8]->getCriterion());
     }
 
+    public function testCaractereStandardEtProfondeurDuPedigreeExterneSerialises(): void
+    {
+        $data = self::input();
+        $data['criteria'][0]['trait'] = 'gentleness';
+        $data['options']['external_pedigree_depth'] = 12;
+
+        /** @var BlupV2Input $input */
+        $input = self::toModel($data, BlupV2Input::class);
+        $json = json_decode(json_encode(ObjectSerializer::sanitizeForSerialization($input)), true);
+
+        self::assertSame(CriterionIn::MODEL_TRAIT_GENTLENESS, $input->getCriteria()[0]->getTrait());
+        self::assertSame('gentleness', $json['criteria'][0]['trait']);
+        self::assertSame(12, $json['options']['external_pedigree_depth']);
+        self::assertSame([], $input->listInvalidProperties());
+    }
+
+    public function testCaractereStandardNullableEtLimiteAuCatalogue(): void
+    {
+        $criterion = (new CriterionIn())->setTrait('honey_yield');
+        $criterion->setTrait(null);
+        self::assertNull($criterion->getTrait());
+        self::assertCount(30, $criterion->getTraitAllowableValues());
+
+        $this->expectException(\InvalidArgumentException::class);
+        $criterion->setTrait('miel');
+    }
+
+    public function testCodesDAvertissementDesNotesEtDuPedigreeExternes(): void
+    {
+        $codes = ['external_ref_resolved', 'external_ref_unknown', 'external_pedigree_unavailable',
+            'external_records_added', 'external_records_unavailable'];
+        $data = self::output();
+        $data['engine_version'] = '2.2.0';
+        $data['warnings'] = array_map(
+            static fn (string $code): array => ['code' => $code, 'message' => $code, 'criterion' => null],
+            $codes
+        );
+
+        /** @var BlupV2Output $out */
+        $out = self::toModel($data, BlupV2Output::class);
+
+        self::assertSame($codes, array_map(static fn ($warning): string => $warning->getCode(), $out->getWarnings()));
+        foreach ($out->getWarnings() as $warning) {
+            self::assertSame([], $warning->listInvalidProperties());
+        }
+    }
+
     public function testV1ToujoursPresent(): void
     {
         self::assertTrue(method_exists(BlupApi::class, 'calulateBlupPost'));

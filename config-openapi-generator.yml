@@ -10,7 +10,7 @@ templateDir: template/php-nextgen
 
 # Package configuration
 invokerPackage: Beekube\BlupSDK
-artifactVersion: 2.0.0
+artifactVersion: 2.2.0
 packageName: blup-php-sdk
 srcBasePath: src
 variableNamingConvention: camelCase
@@ -20,7 +20,7 @@ serverVariables:
   host: https://mellifera.beekube.com
 
 # HTTP client configuration
-httpUserAgent: Beekube-Blup/2.0
+httpUserAgent: Beekube-Blup/2.2
 
 # PHP specific configurations
 modelPackage: Models
