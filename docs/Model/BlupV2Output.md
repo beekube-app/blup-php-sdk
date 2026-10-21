@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **queens** | [**\Beekube\BlupSDK\Models\QueenOut[]**](QueenOut.md) |  |
 **trend** | **array<string,\Beekube\BlupSDK\Models\TrendPoint[]>** |  |
 **warnings** | [**\Beekube\BlupSDK\Models\WarningOut[]**](WarningOut.md) |  |
+**external** | [**\Beekube\BlupSDK\Models\ExternalSummary**](ExternalSummary.md) |  | [optional]
 **status** | **string** |  | [optional] [default to 'success']
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

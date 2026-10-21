@@ -8,6 +8,7 @@ use Beekube\BlupSDK\Models\BLUPOutput;
 use Beekube\BlupSDK\Models\BlupV2Input;
 use Beekube\BlupSDK\Models\BlupV2Output;
 use Beekube\BlupSDK\Models\CriterionIn;
+use Beekube\BlupSDK\Models\ExternalSummary;
 use Beekube\BlupSDK\Models\MatingOut;
 use Beekube\BlupSDK\Models\ModelInterface;
 use Beekube\BlupSDK\Models\RecordIn;
@@ -233,6 +234,40 @@ final class BlupV2SerializationTest extends TestCase
         foreach ($out->getWarnings() as $warning) {
             self::assertSame([], $warning->listInvalidProperties());
         }
+    }
+
+    public function testResumeDesLigneesExternesLuAvecSesMaps(): void
+    {
+        $data = self::output();
+        $data['engine_version'] = '2.3.0';
+        $data['external'] = [
+            'pedigree_used' => true, 'references_linked' => 3, 'unknown_references' => ['FR-XXX-B-0001-2020'],
+            'ancestors' => 6, 'links_cut' => 0, 'ancestors_without_year' => 1, 'ancestors_capped' => false,
+            'records_used' => true, 'records' => 7, 'records_by_criterion' => ['44' => 7], 'record_ancestors' => 2,
+            'contemporaries' => 4, 'contemporaries_capped' => false, 'discarded' => ['no_queen' => 1, 'alone' => 1],
+        ];
+
+        /** @var BlupV2Output $out */
+        $out = self::toModel($data, BlupV2Output::class);
+        $external = $out->getExternal();
+
+        self::assertInstanceOf(ExternalSummary::class, $external);
+        self::assertTrue($external->getPedigreeUsed());
+        self::assertSame(3, $external->getReferencesLinked());
+        self::assertSame(['FR-XXX-B-0001-2020'], $external->getUnknownReferences());
+        self::assertSame(['44' => 7], $external->getRecordsByCriterion());
+        self::assertSame(['no_queen' => 1, 'alone' => 1], $external->getDiscarded());
+        self::assertSame(4, $external->getContemporaries());
+        self::assertSame([], $external->listInvalidProperties());
+    }
+
+    public function testResumeDesLigneesExternesNullOuAbsent(): void
+    {
+        $data = self::output();
+        self::assertNull(self::toModel($data, BlupV2Output::class)->getExternal());
+
+        $data['external'] = null;
+        self::assertNull(self::toModel($data, BlupV2Output::class)->getExternal());
     }
 
     public function testV1ToujoursPresent(): void

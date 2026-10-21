@@ -17,6 +17,7 @@ docs/Model/CriterionParameters.md
 docs/Model/ErrorResponse.md
 docs/Model/ErrorV2Out.md
 docs/Model/Evaluation.md
+docs/Model/ExternalSummary.md
 docs/Model/HeritabilityStats.md
 docs/Model/MatingIn.md
 docs/Model/MatingOut.md
@@ -53,6 +54,7 @@ src/Models/CriterionParameters.php
 src/Models/ErrorResponse.php
 src/Models/ErrorV2Out.php
 src/Models/Evaluation.php
+src/Models/ExternalSummary.php
 src/Models/HeritabilityStats.php
 src/Models/MatingIn.php
 src/Models/MatingOut.php
@@ -72,3 +74,4 @@ src/Models/ValidationErrorModel.php
 src/Models/WarningOut.php
 src/Models/WelcomeResponse.php
 src/ObjectSerializer.php
+tests/Model/ExternalSummaryTest.php
